@@ -5,6 +5,11 @@
 
 Neusis provides nixos configs.
 
+The canonical repository and PR target is
+[`carpenter-shen-lab/neusis`](https://github.com/carpenter-shen-lab/neusis).
+After cloning, run `gh repo set-default carpenter-shen-lab/neusis`.
+The former `shntnu/neusis` repository is retained for historical references.
+
 ## Documentation
 
 Operational documentation for the lab fleet (Oppy, Spirit, Karkinos) lives
@@ -81,7 +86,7 @@ You can rebuild your home-manager profile without waiting for a full
 `nixos-rebuild` — from any fleet machine:
 
 ```bash
-home-manager switch --flake github:shntnu/neusis#<username>@<machine>
+home-manager switch --flake github:carpenter-shen-lab/neusis#<username>@<machine>
 ```
 
 Reads your `homes/<username>/machines/<machine>.nix` entry from the

@@ -41,4 +41,4 @@ home-manager switch --flake '.#blye@spirit'
 
 Use `nix develop` if `home-manager` is not available. Do not change shared
 `homes/common/` settings for personal preferences or bump `home.stateVersion`
-to update tools. Submit changes against `shntnu/neusis:main`.
+to update tools. Submit changes against `carpenter-shen-lab/neusis:main`.
