@@ -147,7 +147,8 @@
     # amunoz's personal Home Manager config. Consumed by
     # homes/amunoz/machines/oppy.nix via `homeModules.amunoz`.
     amunoz-nixos-config = {
-      url = "github:afermg/nixos-config";
+      # Threads support and Atuin 18.24.8 (personal configuration PR #11).
+      url = "github:afermg/nixos-config/c68433a77a0066ecb1b5881e8cff7ca1028c84e0";
       flake = true;
     };
   };

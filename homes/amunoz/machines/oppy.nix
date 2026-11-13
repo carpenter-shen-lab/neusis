@@ -16,12 +16,15 @@
     ../configs/t3code
   ];
 
-  # Reuse the personal configuration, but select Atuin from Neusis's newer
-  # package set rather than the personal/Moby pin. The stable package predates
-  # migrations already present in this user's history database.
-  programs.atuin.package = lib.mkForce (
-    inputs.nixpkgs-ollama.legacyPackages.${pkgs.stdenv.hostPlatform.system}.atuin
-  );
+  # Use the personal flake's current Threads-capable package and explicit server
+  # opt-in. Spirit/Karkinos use that flake's standalone profiles, not a Neusis
+  # system-integrated home; do not enable them here as part of an Atuin update.
+  programs.atuinThreads = {
+    enable = true;
+    capture = true;
+    captureTools = false;
+  };
+  programs.atuin.settings.daemon.sync_frequency = 300;
 
   # A previous targeted Home Manager rollout left this path ahead of the user
   # profile. Manage it here too so it cannot diverge from the daemon's package.
