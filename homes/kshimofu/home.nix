@@ -81,7 +81,6 @@ in
       pixi
 
       # Shell enhancements
-      atuin # Better shell history
       tmux # Terminal multiplexer
 
       # Misc utilities
@@ -177,12 +176,6 @@ in
     # Starship prompt
     starship = {
       enable = lib.mkForce true;
-    };
-
-    # Atuin for better shell history
-    atuin = {
-      enable = lib.mkForce true;
-      enableZshIntegration = true;
     };
 
     # SSH configuration
