@@ -119,7 +119,7 @@ User definitions are merged from `users/*.nix` files via `mergeUserConfigs` in `
 
 ## Contributing Guidelines
 
-- **Canonical repo & PR target**: `shntnu/neusis` is the repo of record for this fleet. Open **all** PRs against `shntnu/neusis:main` — not the personal `afermg/neusis` fork, and not the `leoank/neusis` upstream that GitHub/`gh` default to (both `shntnu` and `afermg` are forks of `leoank`, so `gh pr create` will otherwise target `leoank`). After cloning, run `gh repo set-default shntnu/neusis` once so `gh` PR/issue commands resolve to the right place.
+- **Canonical repo & PR target**: `carpenter-shen-lab/neusis` is the repo of record for this fleet. Open **all** PRs against `carpenter-shen-lab/neusis:main`, not the legacy `shntnu/neusis`, personal `afermg/neusis`, or original `leoank/neusis` repositories. After cloning, run `gh repo set-default carpenter-shen-lab/neusis` so PR/issue commands resolve to the canonical repository. Keep operational history in `broadinstitute/imaging-server-maintenance`; do not add it as a reverse submodule.
 - **No surprises**: Features must be opt-in via individual `homes/<user>/home.nix`, not forced through `homes/common/`
 - **Personal boundaries**: SSH agents, shells, and user tools belong in `homes/<user>/` configs only
 - **Cross-platform**: Don't hardcode architectures in `flake.nix` - use `machines/registry.nix` for dynamic package sets

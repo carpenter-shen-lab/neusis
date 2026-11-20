@@ -18,6 +18,7 @@
     ./system.nix
     ./packages.nix
     ./services.nix
+    ./user-resource-limits.nix
     ./ollama.nix
     ./marimohub.nix
     ./overleaf.nix
@@ -58,8 +59,14 @@
     clientIdFile = ../../secrets/common/tsclient.age;
     clientSecretFile = ../../secrets/common/tssecret.age;
     disableKeyExpiry = true;
-    tailnetOrg = "shntnu.github";
+    tailnetOrg = "ToFdp7kzyV11CNTRL";
   };
+
+  services.tailscale.extraUpFlags = [
+    "--advertise-tags=tag:cslab-servers"
+    "--ssh=false"
+  ];
+  services.tailscale.extraSetFlags = [ "--ssh=false" ];
 
   neusis.cslab.infrastructure = {
     enable = true;
