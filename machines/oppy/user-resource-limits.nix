@@ -18,7 +18,7 @@ in
     sliceConfig = {
       MemoryHigh = "512G";
       MemoryMax = "768G";
-      TasksMax = 4096;
+      TasksMax = 8192;
     };
   };
 }

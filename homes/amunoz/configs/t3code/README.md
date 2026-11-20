@@ -161,12 +161,6 @@ systemctl --user restart t3code.service
 
 ## Providers
 
-**Deployment dependency:** merge the personal CLI update in
-[PR #53](https://github.com/shntnu/neusis/pull/53) before activating this service.
-Without it, current main selects Codex 0.146.0, below T3's recommended range.
-This service's explicit package PATH takes precedence over temporary profile
-repairs, so those repairs are not a substitute for the updated source.
-
 At initial setup, Oppy's Claude Code CLI was authenticated. A later Home
 Manager rollout updated Claude to 2.1.321 and Codex to 0.167.0; Claude's OAuth
 session was subsequently marked ended during authentication verification, so

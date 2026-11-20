@@ -1,11 +1,11 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }:
 let
   hide_window_kitty = if pkgs.stdenv.isDarwin then "titlebar-only" else "yes";
-  atuin_enable = if pkgs.stdenv.isDarwin then true else false;
 in
 {
   home.packages = [
@@ -14,8 +14,8 @@ in
 
   programs = {
     atuin = {
-      enable = atuin_enable;
-      daemon.enable = true;
+      enable = lib.mkDefault false;
+      daemon.enable = lib.mkDefault false;
       flags = [
         "--disable-up-arrow"
       ];

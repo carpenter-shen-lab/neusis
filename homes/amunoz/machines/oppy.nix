@@ -16,15 +16,25 @@
     ../configs/t3code
   ];
 
-  # Use the personal flake's current Threads-capable package and explicit server
-  # opt-in. Spirit/Karkinos use that flake's standalone profiles, not a Neusis
-  # system-integrated home; do not enable them here as part of an Atuin update.
-  programs.atuinThreads = {
-    enable = true;
-    capture = true;
-    captureTools = false;
+  home.packages = [
+    pkgs.awscli2
+    (pkgs.writeShellScriptBin "atuin-mcp" ''
+      exec ${lib.getExe config.programs.atuin.package} mcp "$@"
+    '')
+  ];
+
+  programs.atuin = {
+    package = lib.mkForce (
+      inputs.nixpkgs-atuin.legacyPackages.${pkgs.stdenv.hostPlatform.system}.atuin
+    );
+    settings = {
+      threads = {
+        capture = true;
+        capture_tools = false;
+      };
+      daemon.sync_frequency = 300;
+    };
   };
-  programs.atuin.settings.daemon.sync_frequency = 300;
 
   # A previous targeted Home Manager rollout left this path ahead of the user
   # profile. Manage it here too so it cannot diverge from the daemon's package.

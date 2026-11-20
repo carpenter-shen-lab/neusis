@@ -82,6 +82,31 @@ nix build .#checks.x86_64-linux.switch-safety --no-link
 
 ## Updating your own home-manager profile
 
+### Optional shell history tooling
+
+Atuin is opt-in, not part of the shared onboarding defaults. Enable it only in
+the requesting user's Home Manager profile:
+
+```nix
+programs.atuin.enable = true;
+```
+
+The background daemon is a separate opt-in (`programs.atuin.daemon.enable = true`).
+On high-core-count servers, check its thread count before enabling it; threads
+count toward the user's systemd task limit. Existing personal configurations are
+independent of these defaults. When opting out, disable shell integration and
+both the user daemon service and socket, but preserve the user's history database.
+
+The `amunoz` Oppy profile separately pins Atuin 18.24.8 and opts into Threads
+conversation capture with a five-minute daemon sync interval. Capture applies to
+supported local agent conversations, not only sessions launched through T3;
+tool arguments and results remain excluded. Its `atuin-mcp` launcher uses the
+same package as the CLI and daemon. Other users and the standalone personal
+profiles on Spirit/Karkinos are unchanged. The personal configuration input and
+all existing dependency pins are preserved; only `nixpkgs-atuin` is added.
+
+### Applying profile changes
+
 You can rebuild your home-manager profile without waiting for a full
 `nixos-rebuild` — from any fleet machine:
 
