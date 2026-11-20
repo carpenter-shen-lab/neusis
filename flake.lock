@@ -1426,6 +1426,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-atuin": {
+      "locked": {
+        "lastModified": 1794538799,
+        "narHash": "sha256-sa/y5z69V5iXwAqcKWNlX0QGn52UnCw2PMwZBtzf2nE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "103ab010c78eba0117a5ab6ad392887bdb4b653e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "103ab010c78eba0117a5ab6ad392887bdb4b653e",
+        "type": "github"
+      }
+    },
     "nixpkgs-ollama": {
       "locked": {
         "lastModified": 1789149629,
@@ -1774,6 +1790,7 @@
         "nixos-images": "nixos-images",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_7",
+        "nixpkgs-atuin": "nixpkgs-atuin",
         "nixpkgs-ollama": "nixpkgs-ollama",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",

@@ -97,6 +97,14 @@ count toward the user's systemd task limit. Existing personal configurations are
 independent of these defaults. When opting out, disable shell integration and
 both the user daemon service and socket, but preserve the user's history database.
 
+The `amunoz` Oppy profile separately pins Atuin 18.24.8 and opts into Threads
+conversation capture with a five-minute daemon sync interval. Capture applies to
+supported local agent conversations, not only sessions launched through T3;
+tool arguments and results remain excluded. Its `atuin-mcp` launcher uses the
+same package as the CLI and daemon. Other users and the standalone personal
+profiles on Spirit/Karkinos are unchanged. The personal configuration input and
+all existing dependency pins are preserved; only `nixpkgs-atuin` is added.
+
 ### Applying profile changes
 
 You can rebuild your home-manager profile without waiting for a full

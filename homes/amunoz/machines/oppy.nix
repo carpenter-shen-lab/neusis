@@ -16,14 +16,25 @@
     ../configs/t3code
   ];
 
-  home.packages = [ pkgs.awscli2 ];
+  home.packages = [
+    pkgs.awscli2
+    (pkgs.writeShellScriptBin "atuin-mcp" ''
+      exec ${lib.getExe config.programs.atuin.package} mcp "$@"
+    '')
+  ];
 
-  # Reuse the personal configuration, but select Atuin from Neusis's newer
-  # package set rather than the personal/Moby pin. The stable package predates
-  # migrations already present in this user's history database.
-  programs.atuin.package = lib.mkForce (
-    inputs.nixpkgs-ollama.legacyPackages.${pkgs.stdenv.hostPlatform.system}.atuin
-  );
+  programs.atuin = {
+    package = lib.mkForce (
+      inputs.nixpkgs-atuin.legacyPackages.${pkgs.stdenv.hostPlatform.system}.atuin
+    );
+    settings = {
+      threads = {
+        capture = true;
+        capture_tools = false;
+      };
+      daemon.sync_frequency = 300;
+    };
+  };
 
   # A previous targeted Home Manager rollout left this path ahead of the user
   # profile. Manage it here too so it cannot diverge from the daemon's package.
