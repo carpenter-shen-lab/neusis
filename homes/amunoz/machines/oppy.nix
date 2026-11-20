@@ -16,6 +16,8 @@
     ../configs/t3code
   ];
 
+  home.packages = [ pkgs.awscli2 ];
+
   # Reuse the personal configuration, but select Atuin from Neusis's newer
   # package set rather than the personal/Moby pin. The stable package predates
   # migrations already present in this user's history database.
